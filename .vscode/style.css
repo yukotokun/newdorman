@@ -1,0 +1,79 @@
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #ffe6f0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  text-align: center;
+  max-width: 350px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+h1 {
+  color: #e91e63;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1em;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #d81b60;
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+}
+
+.question {
+  font-size: 1.4em;
+  color: #c2185b;
+  margin-bottom: 20px;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  height: 150px;
+}
+
+#yesBtn {
+  background-color: #ff85c1;
+  width: 150px;
+}
+
+#noBtn {
+  background-color: #aaa;
+  width: 150px;
+}

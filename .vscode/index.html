@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Cinta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card" id="card">
+    <h1>Hai Kamu! 🌹</h1>
+    <p> Aku punya sesuatu yang mau aku sampaikan...</p>
+    <button class="btn" id="startBtn">Klik untuk lihat 💌</button>
+
+    <div id="questionBox" class="hidden">
+      <div class="question">Maukah kamu jadi pacarku? 🥰</div>
+      <div class="btn-container">
+        <button class="btn" id="yesBtn">Tyaaaal 💕</button>
+        <button class="btn" id="noBtn">Gak dulu.. 🙈</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById("startBtn");
+const questionBox = document.getElementById("questionBox");
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+startBtn.addEventListener("click", () => {
+  startBtn.classList.add("hidden");
+  questionBox.classList.remove("hidden");
+});
+
+noBtn.addEventListener("mouseover", () => {
+  const container = document.querySelector(".btn-container");
+  const containerRect = container.getBoundingClientRect();
+  const noRect = noBtn.getBoundingClientRect();
+
+  let newLeft, newTop;
+  newLeft = Math.random() * (containerRect.width - noRect.width);
+  newTop = Math.random() * (containerRect.height - noRect.height);
+
+  noBtn.style.position = "absolute";
+  noBtn.style.left = newLeft + "px";
+  noBtn.style.top = newTop + "px";
+});
+
+yesBtn.addEventListener("click", () => {
+  document.getElementById("card").innerHTML =
+    "<h1>💖 Yeeey! 💖</h1><p>Aku juga sayang banget sama kamu 😍</p>";
+});
+
+  </script>
+</body>
+</html>
