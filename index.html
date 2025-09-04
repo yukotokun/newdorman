@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Cinta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Neue', Comic Sans MS, cursive;
+      background: pink;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #card {
+      width: 400px;
+      height: 300px;
+      background: #fff0f5;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      text-align: center;
+      transition: all 0.5s ease;
+    }
+
+    h1 {
+      color: #ff1493;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    #startBtn, #yesBtn, #noBtn {
+      padding: 10px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 15px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    #startBtn {
+      background: #ff69b4;
+      color: white;
+    }
+
+    #yesBtn {
+      background: #ff1493;
+      color: white;
+    }
+
+    #noBtn {
+      background: #ffb6c1;
+      color: white;
+      position: absolute;
+    }
+
+    #startBtn:hover, #yesBtn:hover, #noBtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    }
+
+    #questionBox.hidden {
+      display: none;
+    }
+
+    #message {
+      font-size: 1.5rem;
+      color: #ff1493;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div id="card">
+    <div id="message">Hai! 💖</div>
+    <button id="startBtn">Klik untuk lihat</button>
+
+    <div id="questionBox" class="hidden">
+      <p>Maukah kamu jadi pacarku?</p>
+      <button id="yesBtn">Tyaaaal</button>
+      <button id="noBtn">Gak dulu..</button>
+    </div>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById("startBtn");
+    const questionBox = document.getElementById("questionBox");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const card = document.getElementById("card");
+    const message = document.getElementById("message");
+
+    startBtn.addEventListener("click", () => {
+      questionBox.classList.remove("hidden");
+      startBtn.style.display = "none";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      message.textContent = "Yeeay! Sekarang kamu resmi jadi pacarku 💖";
+      questionBox.style.display = "none"; // menyembunyikan tombol
+    });
+
+    noBtn.addEventListener("mouseover", () => {
+      const btnWidth = noBtn.offsetWidth;
+      const btnHeight = noBtn.offsetHeight;
+
+      let x, y;
+      let safe = false;
+
+      while (!safe) {
+        x = Math.random() * (card.clientWidth - btnWidth - 20);
+        y = Math.random() * (card.clientHeight - btnHeight - 20);
+
+        const overlapX = (x + btnWidth > yesBtn.offsetLeft && x < yesBtn.offsetLeft + yesBtn.offsetWidth);
+        const overlapY = (y + btnHeight > yesBtn.offsetTop && y < yesBtn.offsetTop + yesBtn.offsetHeight);
+
+        if (!overlapX || !overlapY) safe = true;
+      }
+
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    noBtn.addEventListener("click", () => {
+      message.textContent = "Hmm.. mungkin lain waktu 😅";
+      questionBox.style.display = "none"; // sembunyikan tombol
+    });
+  </script>
+</body>
+</html>
